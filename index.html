@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Defence Systems | Professional Drone Solutions</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Agency+FB:wght@400;700&family=IvyEpic&display=swap">
+    <style>
+        :root {
+            --primary-red: #e91815;
+            --primary-white: #f5f3f5;
+            --primary-black: #141414;
+            --accent-dark: #0a0a0a;
+            --accent-light: #2a2a2a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Agency FB', sans-serif;
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Futuristic Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--accent-dark);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-red);
+            border-radius: 4px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            background: rgba(20, 20, 20, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(233, 24, 21, 0.3);
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(10, 10, 10, 0.95);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'IvyEpic', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-white);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary-red);
+        }
+        
+        .logo-img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: var(--primary-white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-white);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(233, 24, 21, 0.1) 0%, rgba(20, 20, 20, 0.9) 70%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            width: 60%;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-family: 'IvyEpic', sans-serif;
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+        
+        .hero h1 span {
+            color: var(--primary-red);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-red);
+            color: var(--primary-white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Agency FB', sans-serif;
+        }
+        
+        .btn:hover {
+            background-color: #c71412;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(233, 24, 21, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-white);
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-white);
+            color: var(--primary-black);
+            box-shadow: 0 10px 20px rgba(245, 243, 245, 0.3);
+        }
+        
+        .hero-drone {
+            position: absolute;
+            right: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60%;
+            max-width: 800px;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(233, 24, 21, 0.5));
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-55%) translateX(-10px); }
+            100% { transform: translateY(-50%) translateX(0); }
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: var(--accent-dark);
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-family: 'IvyEpic', sans-serif;
+            font-size: 3rem;
+            text-transform: uppercase;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-red);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--accent-light);
+            padding: 30px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(233, 24, 21, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(233, 24, 21, 0.3);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--primary-red);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-family: 'IvyEpic', sans-serif;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .products::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="none" stroke="%23e91815" stroke-width="0.5" stroke-opacity="0.2" d="M0,0 L100,100 M100,0 L0,100" /></svg>');
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .product-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 30px;
+            padding: 20px 0;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+        
+        .product-slider::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        .product-card {
+            min-width: 300px;
+            scroll-snap-align: start;
+            background-color: var(--accent-light);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: var(--primary-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            max-width: 80%;
+            max-height: 80%;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-family: 'IvyEpic', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-info p {
+            margin-bottom: 15px;
+            color: rgba(245, 243, 245, 0.8);
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--accent-dark);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-family: 'IvyEpic', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            margin-right: 15px;
+            color: var(--primary-red);
+            font-size: 1.2rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: var(--accent-light);
+            border: none;
+            border-radius: 5px;
+            color: var(--primary-white);
+            font-family: 'Agency FB', sans-serif;
+            font-size: 1.1rem;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: 2px solid var(--primary-red);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--accent-dark);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(233, 24, 21, 0.2);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            font-family: 'IvyEpic', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary-red);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(245, 243, 245, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-red);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-light);
+            border-radius: 50%;
+            color: var(--primary-white);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-red);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(245, 243, 245, 0.1);
+            font-size: 0.9rem;
+            color: rgba(245, 243, 245, 0.5);
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(233, 24, 21, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(233, 24, 21, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(233, 24, 21, 0); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero-drone {
+                display: none;
+            }
+            
+            .btn-container {
+                display: flex;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                right: 0;
+                top: 80px;
+                width: 100%;
+                background-color: var(--accent-dark);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                clip-path: circle(0px at 90% -10%);
+                transition: all 0.5s ease-out;
+                pointer-events: none;
+            }
+            
+            .nav-links.active {
+                clip-path: circle(1000px at 90% -10%);
+                pointer-events: all;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        /* Futuristic UI Elements */
+        .tech-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
+            opacity: 0.3;
+        }
+        
+        .tech-line.top {
+            top: 0;
+        }
+        
+        .tech-line.bottom {
+            bottom: 0;
+        }
+        
+        .grid-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(233, 24, 21, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(233, 24, 21, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Binary animation for futuristic effect */
+        .binary-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            opacity: 0.05;
+        }
+        
+        .binary-code {
+            position: absolute;
+            color: var(--primary-red);
+            font-family: monospace;
+            font-size: 0.8rem;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Binary Animation Background -->
+    <div class="binary-animation" id="binaryAnimation"></div>
+    
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZTkxODE1IiBkPSJNMjU2IDhDMTE5IDggOCAxMTkgOCAyNTZzMTExIDI0OCAyNDggMjQ4IDI0OC0xMTEgMjQ4LTI0OFMzOTMgOCAyNTYgOHptMCA0NDhjLTExMC41IDAtMjAwLTg5LjUtMjAwLTIwMFMxNDUuNSA1NiAyNTYgNTZzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwWm03MC4yLTMxNy4zYy0zLjktMy45LTEwLjItMy45LTE0LjEgMEwyNTYgMzQxLjQgMTk5LjkgMjg1LjNjLTMuOS0zLjktMTAuMi0zLjktMTQuMSAwLTMuOSAzLjktMy45IDEwLjIgMCAxNC4xTDI0MS45IDM2MGMxLjkgMS45IDQuNCAyLjkgNy4xIDIuOXM1LjItMSA3LjEtMi45bDU2LjItNTYuMmMzLjgtMy45IDMuOC0xMC4xLS4xLTE0LjF6Ii8+PC9zdmc+" alt="Drone Defence Systems Logo" class="logo-img">
+                    DRONE <span>DEFENCE</span>
+                </a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="technology.html">Technology</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </nav>
+        </div>
+        <div class="tech-line top"></div>
+        <div class="tech-line bottom"></div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="grid-pattern"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>REDEFINING <span>AERIAL</span> SECURITY</h1>
+                <p>Cutting-edge drone technology for defense, surveillance, and security applications. Our professional-grade drones are engineered for precision, reliability, and unmatched performance.</p>
+                <div class="btn-container">
+                    <a href="products.html" class="btn pulse">Explore Products</a>
+                    <a href="contact.html" class="btn btn-outline">Request Demo</a>
+                </div>
+            </div>
+            <img src="https://via.placeholder.com/800x600/141414/e91815?text=DRONE+DEFENCE+SYSTEMS" alt="Advanced Drone" class="hero-drone">
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>OUR <span>ADVANTAGES</span></h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Military-Grade Durability</h3>
+                    <p>Our drones are built to withstand extreme conditions with reinforced carbon fiber frames and weather-resistant components.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Encrypted Communication</h3>
+                    <p>Advanced AES-256 encryption ensures secure data transmission and protection against interception.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Precision Targeting</h3>
+                    <p>AI-powered tracking systems with millimeter accuracy for critical operations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Counter-Drone Systems</h3>
+                    <p>Integrated defense mechanisms to detect and neutralize hostile drones.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔋</div>
+                    <h3>Extended Flight Time</h3>
+                    <p>Patented battery technology delivers up to 120 minutes of continuous flight.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Global Support</h3>
+                    <p>24/7 technical support with rapid response teams stationed worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>FLAGSHIP <span>PRODUCTS</span></h2>
+            </div>
+            <div class="product-slider">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x300/141414/e91815?text=SENTINEL-X1" alt="Sentinel X1 Drone">
+                    </div>
+                    <div class="product-info">
+                        <h3>SENTINEL-X1</h3>
+                        <p>High-speed reconnaissance drone with stealth capabilities and 8K imaging.</p>
+                        <div class="product-price">$24,999</div>
+                        <a href="#" class="btn">Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x300/141414/e91815?text=GUARDIAN-G7" alt="Guardian G7 Drone">
+                    </div>
+                    <div class="product-info">
+                        <h3>GUARDIAN-G7</h3>
+                        <p>Heavy-lift cargo drone with 50kg payload capacity and EMP shielding.</p>
+                        <div class="product-price">$42,500</div>
+                        <a href="#" class="btn">Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x300/141414/e91815?text=PHANTOM-V9" alt="Phantom V9 Drone">
+                    </div>
+                    <div class="product-info">
+                        <h3>PHANTOM-V9</h3>
+                        <p>Ultra-quiet surveillance drone with thermal imaging and facial recognition.</p>
+                        <div class="product-price">$18,750</div>
+                        <a href="#" class="btn">Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x300/141414/e91815?text=TITAN-T5" alt="Titan T5 Drone">
+                    </div>
+                    <div class="product-info">
+                        <h3>TITAN-T5</h3>
+                        <p>Combat-ready drone with non-lethal deterrent systems and armor plating.</p>
+                        <div class="product-price">$65,000</div>
+                        <a href="#" class="btn">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>GET IN <span>TOUCH</span></h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>CONTACT OUR DEFENSE SPECIALISTS</h3>
+                    <p>Our team is ready to discuss your security requirements and demonstrate how our drone systems can enhance your operations.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span>Defence Innovation Park, Building 7, Prague, Czech Republic</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <span>+420 123 456 789</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <span>info@dronedefencesystems.com</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><span>FB</span></a>
+                        <a href="#"><span>TW</span></a>
+                        <a href="#"><span>IN</span></a>
+                        <a href="#"><span>YT</span></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Organization">
+                    <input type="text" placeholder="Subject">
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn">SEND MESSAGE</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>DRONE DEFENCE</h4>
+                    <p>Leading innovator in professional drone technology for defense and security applications worldwide.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>PRODUCTS</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Surveillance Drones</a></li>
+                        <li><a href="#">Combat Drones</a></li>
+                        <li><a href="#">Cargo Drones</a></li>
+                        <li><a href="#">Counter-Drone Systems</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>SOLUTIONS</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Border Security</a></li>
+                        <li><a href="#">Critical Infrastructure</a></li>
+                        <li><a href="#">Military Operations</a></li>
+                        <li><a href="#">Disaster Response</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>COMPANY</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Research</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 DRONE DEFENCE SYSTEMS. All rights reserved. | ITAR Registered | ISO 9001:2015 Certified</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Binary Animation
+        const binaryAnimation = document.getElementById('binaryAnimation');
+        const binaryChars = ['0', '1'];
+        
+        function createBinary() {
+            const binaryElement = document.createElement('div');
+            binaryElement.classList.add('binary-code');
+            
+            // Random position
+            binaryElement.style.left = Math.random() * 100 + 'vw';
+            
+            // Random animation duration
+            const duration = Math.random() * 10 + 10;
+            binaryElement.style.animationDuration = duration + 's';
+            
+            // Random binary string
+            let binaryString = '';
+            const length = Math.floor(Math.random() * 20) + 10;
+            for (let i = 0; i < length; i++) {
+                binaryString += binaryChars[Math.floor(Math.random() * binaryChars.length)];
+            }
+            
+            binaryElement.textContent = binaryString;
+            
+            // Random opacity
+            binaryElement.style.opacity = Math.random() * 0.3 + 0.1;
+            
+            binaryAnimation.appendChild(binaryElement);
+            
+            // Remove element after animation completes
+            setTimeout(() => {
+                binaryElement.remove();
+            }, duration * 1000);
+        }
+        
+        // Create initial binary elements
+        for (let i = 0; i < 30; i++) {
+            setTimeout(createBinary, i * 300);
+        }
+        
+        // Continue creating binary elements
+        setInterval(createBinary, 300);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
