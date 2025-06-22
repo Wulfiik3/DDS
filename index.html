@@ -1,37 +1,26 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>DDS - Coming Soon</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background-color: #000;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .container {
-      width: 90vw;
-      max-width: 1280px;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-    }
-
-    .container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-  </style>
+    <title>DDS</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .fullscreen-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <img src="drone5.png" alt="Coming Soon">
-  </div>
+    <img class="fullscreen-image" src="drone5.png" alt="Fullscreen Image">
 </body>
 </html>
